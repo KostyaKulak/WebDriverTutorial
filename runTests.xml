@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestNG factory">
+    <test name="FIREFOX Test">
+        <classes>
+            <class name="basicTest.SevenOnSevenTest"/>
+        </classes>
+    </test>
+</suite>
