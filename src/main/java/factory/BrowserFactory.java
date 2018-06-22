@@ -38,10 +38,6 @@ public class BrowserFactory {
                 driver.set(new FirefoxDriver((FirefoxOptions) capabilities));
                 break;
         }
-        WebDriver webDriver = driver.get();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
-        driver.set(webDriver);
     }
 
     public static void startDriver(String name) {
@@ -52,9 +48,9 @@ public class BrowserFactory {
     }
 
     public static void quitDriver() {
-        if (driver != null) {
+        if (driver.get() != null) {
             driver.get().quit();
-            driver = null;
+            driver.set(null);
         }
     }
 

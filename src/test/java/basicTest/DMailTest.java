@@ -1,34 +1,17 @@
 package basicTest;
 
-import factory.BrowserFactory;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.mailru.*;
+import page.mailru.DraftsPage;
+import page.mailru.InboxPage;
+import page.mailru.NewLetterPage;
+import page.mailru.SentPage;
 
-import static util.propertiesreader.PropertiesReader.getPropertyValue;
-
-public class DMailTest {
-    MailRuPage mailRuPage;
-    DraftsPage draftsPage;
-    SentPage sentPage;
-    InboxPage inboxPage;
-    NewLetterPage newLetterPage;
-    String username;
-    String password;
-    String getter;
-    String subject;
-    String text;
-
-    @BeforeClass
-    public void setUp() {
-        mailRuPage = new MailRuPage(BrowserFactory.getDriver());
-        username = getPropertyValue("username");
-        password = getPropertyValue("password");
-        getter = getPropertyValue("getter");
-        subject = getPropertyValue("subject");
-        text = getPropertyValue("text");
-    }
+public class DMailTest extends BasicMailTest {
+    private InboxPage inboxPage;
+    private NewLetterPage newLetterPage;
+    private DraftsPage draftsPage;
+    private SentPage sentPage;
 
     @Test
     public void testMailInDeclarativeStyle() {
