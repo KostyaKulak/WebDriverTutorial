@@ -16,7 +16,11 @@ import static util.constant.CommonProps.IMPLICIT_WAIT;
 
 public class BrowserFactory {
 
-    static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    static ThreadLocal<WebDriver> driver;
+
+    static {
+        driver = new ThreadLocal<>();
+    }
 
     static void createDriver(String name) {
         Capabilities capabilities = getCapabilities(name);

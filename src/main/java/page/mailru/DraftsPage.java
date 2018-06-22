@@ -58,10 +58,11 @@ public class DraftsPage extends CustomPage {
     }
 
     private String getIdOfSentLetter() {
-        By locator = By.xpath("//*[@id=\"b-compose__sent\"]/div/div[1]/div/a[1]");
+        By locator = By.xpath("//a[text()='письмо']");
         new WebDriverWait(driver, 100, 10).until(driver -> driver.findElement(locator));
         driver.findElement(locator).click();
-        return driver.findElement(By.xpath("//*[@id=\"b-letter\"]/div[2]")).getAttribute("data-letter-id");
+        By secondLocator = By.xpath("//*[@id=\"b-letter\"]/div[2]");
+        return driver.findElement(secondLocator).getAttribute("data-letter-id");
     }
 
     public static void setId(String newId) {

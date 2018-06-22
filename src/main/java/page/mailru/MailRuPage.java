@@ -32,7 +32,6 @@ public class MailRuPage extends CustomPage {
     }
 
     public InboxPage signInWithCredentials(String username, String password) {
-        usernameField.clear();
         Actions actions = new Actions(driver);
         actions
                 .sendKeys(usernameField, username)

@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestNG factory" parallel="tests">
+<suite name="TestNG factory" parallel="tests" thread-count="2">
     <!--<test name="7x7 Test">-->
     <!--<classes>-->
     <!--<class name="basicTest.SevenOnSevenTest"/>-->

@@ -3,12 +3,15 @@ package page.mailru;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import page.CustomPage;
 
 import static util.logger.MyLogger.LOGGER;
 
 public class SentPage extends CustomPage {
+    @FindBy(xpath = "//*[@id=\"mailbox:login\"]")
+    WebElement usernameField;
 
     private String sentMail;
     private String sentSubject;
@@ -33,8 +36,10 @@ public class SentPage extends CustomPage {
         return driver.findElements(By.xpath("//div[@data-id='" + id + "']")).size() > 0;
     }
 
-    public void logOut() {
+    public MailRuPage logOut() {
         driver.findElement(By.xpath("//*[@id=\"PH_logoutLink\"]")).click();
+        usernameField.clear();
+        return new MailRuPage(driver).open();
     }
 
     public String getSentGetter() {
