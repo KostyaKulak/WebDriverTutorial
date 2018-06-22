@@ -34,7 +34,7 @@
                             <property>
                                 <name>listener</name>
                                 <value>
-                                    util.listener.TestListener
+                                    util.listener.TestListener,util.listener.InvokedMethodListener
                                 </value>
                             </property>
                         </properties>

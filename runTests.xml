@@ -1,8 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="TestNG factory">
-    <test name="FIREFOX Test">
+<suite name="TestNG factory" parallel="tests">
+    <!--<test name="7x7 Test">-->
+    <!--<classes>-->
+    <!--<class name="basicTest.SevenOnSevenTest"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+    <test name="Fluent style Mail.ru Test">
         <classes>
-            <class name="basicTest.SevenOnSevenTest"/>
+            <class name="basicTest.FMailTest"/>
+        </classes>
+    </test>
+    <test name="Declarative style Mail.ru Test">
+        <classes>
+            <class name="basicTest.DMailTest"/>
         </classes>
     </test>
 </suite>

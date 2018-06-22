@@ -9,7 +9,10 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
+import java.util.concurrent.TimeUnit;
+
 import static factory.CapabilityFactory.getCapabilities;
+import static util.constant.CommonProps.IMPLICIT_WAIT;
 
 public class BrowserFactory {
 
@@ -31,6 +34,10 @@ public class BrowserFactory {
                 driver.set(new FirefoxDriver((FirefoxOptions) capabilities));
                 break;
         }
+        WebDriver webDriver = driver.get();
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
+        driver.set(webDriver);
     }
 
     public static void startDriver(String name) {

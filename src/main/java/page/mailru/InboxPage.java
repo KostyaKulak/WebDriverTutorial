@@ -7,15 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import page.CustomPage;
 
+import static util.logger.MyLogger.LOGGER;
+
 public class InboxPage extends CustomPage {
-    @FindBy(xpath = "//*[@id=\"b-toolbar__left\"]/div/div/div[2]/div/a/span")
-    WebElement newLetterButton;
-
-    @FindBy(xpath = "//*[@id=\"toolkit-152959478668541composeForm\"]/div[1]/div/div[3]/div[1]/div/div/div[2]/div/div/div")
-    WebElement newLetterGetter;
-
-    @FindBy(xpath = "//*[@id=\"toolkit-152959478668541composeForm\"]/div[1]/div/div[3]/div[4]/div/div/div[2]/div/input")
-    WebElement newLetterTopic;
+    @FindBy(xpath = "//span[@class='b-toolbar__btn__text b-toolbar__btn__text_pad']")
+    private WebElement newLetterButton;
 
     public InboxPage(WebDriver driver) {
         super(driver);
@@ -29,10 +25,18 @@ public class InboxPage extends CustomPage {
     }
 
     public boolean isItInboxPage() {
+        while (true) {
+            if (driver.getCurrentUrl().contains(this.url)) break;
+        }
+        LOGGER.info("Checking inbox page title");
         return driver.getTitle().equals("Входящие - Почта Mail.Ru");
     }
 
     public boolean isLoginSuccessful() {
+        while (true) {
+            if (driver.getCurrentUrl().contains(this.url)) break;
+        }
+        LOGGER.info("Checking is login successful");
         return driver.findElements(By.xpath("//*[@id=\"mailbox:error\"]")).size() == 0;
     }
 
