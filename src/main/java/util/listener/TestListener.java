@@ -1,6 +1,7 @@
 package util.listener;
 
-import factory.BrowserFactory;
+import factory.BrowserManager;
+import factory.BrowserManagerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -34,11 +35,11 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        BrowserFactory.startDriver(PropertiesReader.getPropertyValue("browser"));
+        BrowserManagerFactory.getManager(PropertiesReader.getPropertyValue("browser")).createDriver();
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        BrowserFactory.quitDriver();
+        BrowserManager.quitDriver();
     }
 }

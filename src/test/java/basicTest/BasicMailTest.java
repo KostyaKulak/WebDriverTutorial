@@ -1,9 +1,11 @@
 package basicTest;
 
-import factory.BrowserFactory;
+import factory.BrowserManager;
+import factory.BrowserManagerFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import page.mailru.MailRuPage;
+import util.propertiesreader.PropertiesReader;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +23,7 @@ public class BasicMailTest {
 
     @BeforeClass
     public void setUp() {
-        driver = BrowserFactory.getDriver();
+        driver = BrowserManager.getDriver();
         driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
         mailRuPage = new MailRuPage(driver);
         username = getPropertyValue("username");

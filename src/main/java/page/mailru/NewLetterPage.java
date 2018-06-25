@@ -6,9 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import page.CustomPage;
 
-public class NewLetterPage extends CustomPage {
+public class NewLetterPage extends EMailPage {
     @FindBy(xpath = "//textarea[@data-original-name='To']")
     WebElement newLetterGetterField;
 
@@ -50,7 +49,8 @@ public class NewLetterPage extends CustomPage {
         }
         WebElement element = driver.findElement(By.xpath("//input[@name='draft_msg']"));
         DraftsPage.setId(element.getAttribute("value"));
-        return new DraftsPage(driver).open();
+        pressDraftsButton();
+        return new DraftsPage(driver);
     }
 
 

@@ -2,16 +2,11 @@ package page.mailru;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import page.CustomPage;
 
 import static util.logger.MyLogger.LOGGER;
 
-public class InboxPage extends CustomPage {
-    @FindBy(xpath = "//span[@class='b-toolbar__btn__text b-toolbar__btn__text_pad']")
-    private WebElement newLetterButton;
+public class InboxPage extends EMailPage {
 
     public InboxPage(WebDriver driver) {
         super(driver);
@@ -19,12 +14,7 @@ public class InboxPage extends CustomPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public NewLetterPage writeNewLetter() {
-        newLetterButton.click();
-        return new NewLetterPage(driver);
-    }
-
-    public boolean isItInboxPage() {
+    public boolean isItInboxPageTitle() {
         while (true) {
             if (driver.getCurrentUrl().contains(this.url)) break;
         }

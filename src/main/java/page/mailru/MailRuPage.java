@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import page.CustomPage;
+import util.constant.CommonProps;
 
 public class MailRuPage extends CustomPage {
     @FindBy(xpath = "//*[@id=\"mailbox:login\"]")
@@ -20,7 +21,7 @@ public class MailRuPage extends CustomPage {
 
     public MailRuPage(WebDriver driver) {
         super(driver);
-        this.url = "https://www.mail.ru";
+        this.url = CommonProps.MAIL_RU_URL;
         this.locators.add(By.xpath("//*[@id=\"portal-headline\"]/table/tbody/tr/td[1]/a[1]"));
         this.locators.add(By.xpath("//*[@id=\"portal-headline\"]/table/tbody/tr/td[1]/a[2]"));
         this.locators.add(By.xpath("//*[@id=\"portal-headline\"]/table/tbody/tr/td[1]/a[3]"));
@@ -32,6 +33,7 @@ public class MailRuPage extends CustomPage {
     }
 
     public InboxPage signInWithCredentials(String username, String password) {
+        usernameField.clear();
         Actions actions = new Actions(driver);
         actions
                 .sendKeys(usernameField, username)
@@ -43,8 +45,8 @@ public class MailRuPage extends CustomPage {
     }
 
     @Override
-    public MailRuPage open() {
-        return (MailRuPage) super.open();
+    public MailRuPage openUrl() {
+        return (MailRuPage) super.openUrl();
     }
 
 }

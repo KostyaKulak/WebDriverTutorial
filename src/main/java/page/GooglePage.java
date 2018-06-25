@@ -2,11 +2,12 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import util.constant.CommonProps;
 
 public class GooglePage extends CustomPage {
     public GooglePage(WebDriver driver) {
         super(driver);
-        this.url = "https://www.google.by";
+        this.url = CommonProps.GOOGLE_URL;
         this.locators.add(By.xpath("//*[@id=\"tsf\"]/div[2]/div[3]/center/input[1]"));
         this.locators.add(By.xpath("//*[@id=\"gbw\"]/div/div/div[1]/div[2]/a"));
         this.locators.add(By.xpath("//*[@id=\"gbw\"]/div/div/div[1]/div[3]/a"));

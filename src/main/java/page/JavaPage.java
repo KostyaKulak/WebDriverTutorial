@@ -2,11 +2,12 @@ package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import util.constant.CommonProps;
 
 public class JavaPage extends CustomPage {
     public JavaPage(WebDriver driver) {
         super(driver);
-        this.url = "https://www.java.com";
+        this.url = CommonProps.JAVA_URL;
         this.locators.add(By.xpath("/html/body/div[1]/a"));
         this.locators.add(By.xpath("/html/body/div[1]/p/a[1]"));
         this.locators.add(By.xpath("/html/body/div[1]/p/a[2]"));

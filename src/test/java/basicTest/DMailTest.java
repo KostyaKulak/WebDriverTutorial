@@ -16,10 +16,11 @@ public class DMailTest extends BasicMailTest {
     @Test
     public void testMailInDeclarativeStyle() {
         SoftAssert softAssert = new SoftAssert();
-        mailRuPage.open();
+        mailRuPage.openUrl();
         inboxPage = mailRuPage.signInWithCredentials(username, password);
         softAssert.assertTrue(inboxPage.isLoginSuccessful());
-        softAssert.assertTrue(inboxPage.isItInboxPage());
+        softAssert.assertTrue(inboxPage.isItInboxPageTitle());
+        softAssert.assertTrue(inboxPage.isFooterOnPage());
         softAssert.assertAll();
         newLetterPage = inboxPage.writeNewLetter();
         newLetterPage.writeLetter(getter, subject, text);

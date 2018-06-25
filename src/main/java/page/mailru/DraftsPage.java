@@ -5,12 +5,15 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page.CustomPage;
 
+import java.time.Duration;
+
+import static util.constant.CommonProps.IMPLICIT_WAIT;
 import static util.logger.MyLogger.LOGGER;
 
-public class DraftsPage extends CustomPage {
+public class DraftsPage extends EMailPage {
 
     private String draftGetter;
     private String draftSubject;
@@ -49,20 +52,13 @@ public class DraftsPage extends CustomPage {
             }
         }
         SentPage.setId(getIdOfSentLetter());
-        return new SentPage(driver).open();
+        pressSendButton();
+        return new SentPage(driver);
     }
 
     public boolean isLetterInDrafts() {
         LOGGER.info("Checking is letter in drafts folder");
         return driver.findElements(By.xpath("//div[@data-id='" + id + "']")).size() > 0;
-    }
-
-    private String getIdOfSentLetter() {
-        By locator = By.xpath("//a[text()='письмо']");
-        new WebDriverWait(driver, 100, 10).until(driver -> driver.findElement(locator));
-        driver.findElement(locator).click();
-        By secondLocator = By.xpath("//*[@id=\"b-letter\"]/div[2]");
-        return driver.findElement(secondLocator).getAttribute("data-letter-id");
     }
 
     public static void setId(String newId) {
@@ -87,8 +83,11 @@ public class DraftsPage extends CustomPage {
         return draftMessage;
     }
 
-    @Override
-    public DraftsPage open() {
-        return (DraftsPage) super.open();
+    private String getIdOfSentLetter() {
+        By locator = By.xpath("//a[text()='письмо']");
+        new FluentWait<WebElement>(driver.findElement(locator)).withTimeout(Duration.ofSeconds(IMPLICIT_WAIT)).pollingEvery(Duration.ofSeconds(1));
+        driver.findElement(locator).click();
+        By secondLocator = By.xpath("//*[@id=\"b-letter\"]/div[2]");
+        return driver.findElement(secondLocator).getAttribute("data-letter-id");
     }
 }

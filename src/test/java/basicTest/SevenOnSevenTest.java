@@ -1,109 +1,81 @@
 package basicTest;
 
-import factory.BrowserFactory;
+import factory.BrowserManager;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import page.*;
+import page.ApplePage;
+import page.BingPage;
+import page.CustomPage;
+import page.GooglePage;
+import page.JavaPage;
+import page.YahooPage;
+import page.YandexPage;
 import page.mailru.MailRuPage;
 
 public class SevenOnSevenTest {
-    CustomPage page;
+    WebDriver driver;
+
+    @BeforeClass
+    public void setUp() {
+        driver = BrowserManager.getDriver();
+    }
 
     @Test
-    public void testPage1() {
-        page = new ApplePage(BrowserFactory.getDriver()).open();
+    public void testApplePage() {
+        CustomPage page = new ApplePage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage2() {
-        page = new BingPage(BrowserFactory.getDriver()).open();
+    public void testBingPage() {
+        CustomPage page = new BingPage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage3() {
-        page = new JavaPage(BrowserFactory.getDriver()).open();
+    public void testJavaPage() {
+        CustomPage page = new JavaPage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage4() {
-        page = new GooglePage(BrowserFactory.getDriver()).open();
+    public void testGooglePage() {
+        CustomPage page = new GooglePage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage5() {
-        page = new MailRuPage(BrowserFactory.getDriver()).open();
+    public void testMailRuPage() {
+        CustomPage page = new MailRuPage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage6() {
-        page = new YahooPage(BrowserFactory.getDriver()).open();
+    public void testYahooPage() {
+        CustomPage page = new YahooPage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
     @Test
-    public void testPage7() {
-        page = new YandexPage(BrowserFactory.getDriver()).open();
+    public void testYandexPage() {
+        CustomPage page = new YandexPage(driver).openUrl();
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(page.checkElement(1), true);
-        softAssert.assertEquals(page.checkElement(2), true);
-        softAssert.assertEquals(page.checkElement(3), true);
-        softAssert.assertEquals(page.checkElement(4), true);
-        softAssert.assertEquals(page.checkElement(5), true);
-        softAssert.assertEquals(page.checkElement(6), true);
-        softAssert.assertEquals(page.checkElement(7), true);
+        softAssert.assertTrue(page.checkPage(), page.getUrl() + " has some mistakes");
         softAssert.assertAll();
     }
 
